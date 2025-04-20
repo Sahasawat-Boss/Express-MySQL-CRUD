@@ -14,6 +14,9 @@ const app = express()
 app.use(express.json());
 app.use(morgan('dev'));
 
+//routes
+app.use('/api/v1/student', require('./routes/studentRoutes'))
+
 
 // Routes
 app.get("/test", (req, res) => {
