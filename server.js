@@ -17,6 +17,7 @@ app.use(morgan('dev'));
 //routes
 app.use('/api/v1/student', require('./routes/studentRoutes'))
 
+app.use('/api/v1/classes', require('./routes/classesRoutes'))
 
 // Routes
 app.get("/test", (req, res) => {
