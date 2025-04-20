@@ -61,6 +61,48 @@ const getStudentsByID = async (req, res) => {
             error
         });
     }
-}
+};
 
-module.exports = { getStudents, getStudentsByID };
+//!Create Student +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const createStudent = async (req, res) => {
+    try {
+        const { name, roll_no, fees,  classes, medium,age } = req.body
+        if (!name || !roll_no || !classes || !medium || !fees || !age) {
+            return res.status(500).send({
+                sucess: false,
+                message: 'Please provide all fields',
+            });
+        }
+        const data = await db.query(
+            `INSERT INTO students (name, roll_no, fees, classes, medium, age) VALUES (?, ?, ?, ?, ?, ?)`,
+            [name, roll_no, fees, classes, medium, age]
+        );
+        if (!data) {
+            return res.status(404).send({
+                sucess: false,
+                message: 'ERROR Insering Query',
+            });
+        }
+        res.status(201).send({
+            success: true,
+            message: 'New student record created successfully',
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            sucess: false,
+            message: 'ERROR Creating Student API',
+            error
+        });
+    }
+};
+
+
+
+module.exports = {
+    getStudents, getStudentsByID, createStudent
+
+
+
+};
