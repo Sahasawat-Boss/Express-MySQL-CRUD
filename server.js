@@ -39,7 +39,8 @@ mySqlPool
     })
 
 
-
-// http://localhost:8080/
-// Run Server: node server.js
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
 // node --watch server.js
+
+// Update Script to npm run dev =  node --watch server.js
+// npm run dev
