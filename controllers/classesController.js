@@ -98,9 +98,38 @@ const createClasses = async (req, res) => {
     }
 };
 
+//!DELETE Classes +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const deleteClasses = async (req, res) => {
+    try {
+        const classesID = req.params.id
+        if (!classesID) {
+            return res.status(404).send({
+                sucess: false,
+                message: 'Please provide valid classes ID',
+            });
+        }
+        await db.query(`DELETE FROM classes WHERE id = ?`, [classesID])
+        res.status(200).send({
+            sucess: true,
+            message: 'Classes deleted sucessfully',
+        });
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: 'ERROR deleting classes API',
+            error,
+        });
+    }
+}
+
+
 
 module.exports = {
     getClasses,
     getClassesByID,
     createClasses,
+    deleteClasses,
 };

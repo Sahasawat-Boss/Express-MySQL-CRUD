@@ -1,5 +1,5 @@
 const express = require('express');
-const { getClasses, getClassesByID, createClasses, } = require('../controllers/classesController');
+const { getClasses, getClassesByID, createClasses,deleteClasses } = require('../controllers/classesController');
 
 // router object
 const router = express.Router()
@@ -14,6 +14,9 @@ router.get('/get/:id', getClassesByID)
 
 //Create Classes (Create)
 router.post('/create', createClasses)
+
+//Delete Classes 
+router.delete('/delete/:id', deleteClasses)
 
 
 
